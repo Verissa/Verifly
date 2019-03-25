@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "466856906043",
+    "firebase_url": "https://verifly-cfd1e.firebaseio.com",
+    "project_id": "verifly-cfd1e",
+    "storage_bucket": "verifly-cfd1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466856906043:android:7b6e54fbfa333461",
+        "android_client_info": {
+          "package_name": "com.example.verifly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466856906043-mlisolflf8jqm4a3gqtpt39r5h83p2p2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.verifly",
+            "certificate_hash": "837207ca89c61c72aa2943677da4b1526033a09d"
+          }
+        },
+        {
+          "client_id": "466856906043-somvb1fijeemjbhk2np3n26p2i8kni0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-iU8FcCQbalH-wZqiXvpkOiVKbebomqs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466856906043-somvb1fijeemjbhk2np3n26p2i8kni0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

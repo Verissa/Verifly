@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">VERIFLY</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">438206926639584</string>
+
+    <string name="fb_login_protocol_scheme">fb438206926639584</string>
+    <string name="destination_hint">Where are you going?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Onboarding Labels and Description -->
+    <string name="slider_title_1"> Is Raba Rides for me? </string>
+    <string name="slider_title_2"> How secure am I? </string>
+    <string name="slider_title_3"> Where do I start? </string>
+
+    <string name="slider_description_1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+         elit. Nulla interdum risus auctor ex hendrerit pharetra.
+         Fusce quis eros tristique, egestas dolor eu,
+        bibendum urna.
+    </string>
+
+    <string name="slider_description_2">
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+         elit. Nulla interdum risus auctor ex hendrerit pharetra.
+         Fusce quis eros tristique, egestas dolor eu,
+        bibendum urna.
+    </string>
+
+    <string name="slider_description_3">
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+         elit. Nulla interdum risus auctor ex hendrerit pharetra.
+         Fusce quis eros tristique, egestas dolor eu,
+        bibendum urna.
+    </string>
+
+    <string name="title_activity_nav_demo">NavDemo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="toolbar_default_header"> Find a Ride </string>
+
+    <string name="search_destination_label"> Where are you going to? </string>
+    <string name="search_origin_label"> Where are you leaving from? </string>
+
+    <string name="main_greetings"> Hello </string>
+    <string name="main_placeholder_name"> Ama </string>
+
+    <string name="main_label_first"> Request First Aid</string>
+    <string name="main_label_second"> Bus Rides </string>
+    <string name="main_button_text"> See More </string>
+
+    <string name="main_label_subtitle"> No Upcoming Trip </string>
+    <string name="main_label_title"> Book a Trip </string>
+    <string name="main_label_title_alert"> Create an Alert </string>
+
+
+    <string name="main_label_cta_title"> Going Somewhere Alone? </string>
+    <string name="main_label_cta_subtitle"> Share a ride. Offer a ride. Carpool hassle-free </string>
+
+</resources>
