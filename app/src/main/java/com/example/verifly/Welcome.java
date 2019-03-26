@@ -19,13 +19,17 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 public class Welcome extends AppCompatActivity implements View.OnClickListener{
     private ImageButton request, quiz, learn;
     private TextView mUserName;
-    private String mUserId;
+    private String mUserId, mName;
+    //private FirebaseUser mUser;
+    //private FirebaseAuth mAuth;
 
 
 
@@ -43,11 +47,24 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
         quiz.setOnClickListener(this);
         learn.setOnClickListener(this);
         mUserName = findViewById(R.id.main_toolbar_name);
-
         Intent mIntent = getIntent();
-        mUserId= mIntent.getStringExtra("User_ID");
+        String mUserId = mIntent.getStringExtra("User_ID");
+        String mName = mIntent.getStringExtra("User_Name");
+
+        //mUser = mAuth.getCurrentUser();
+        mUserName.setText(mName);
+
+//        Intent mIntent = getIntent();
+//        mUserId= mIntent.getStringExtra("User_ID");
+//        mName = mIntent.getStringExtra()
 //
 //        if (previousActivity.equals("Main")){
+//            String mUserId = mIntent.getStringExtra("User_ID");
+//            String userName = mIntent.getStringExtra("User_Name");
+//            mUserName.setText(userName);
+//        }
+
+//        if (previousActivity.equals("MedicalInfo")){
 //            String mUserId = mIntent.getStringExtra("User_ID");
 //            String userName = mIntent.getStringExtra("User_Name");
 //            mUserName.setText(userName);

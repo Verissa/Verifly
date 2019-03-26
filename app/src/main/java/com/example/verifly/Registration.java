@@ -113,13 +113,17 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
                         FirebaseUser user = mUserAuth.getCurrentUser();
                         String userId = user.getUid();
+//
+//                        User mUser = new User(name, email);
+//                        //mDatabase.push().setValue(mUser);
+//
+//                        mDatabase.child("users").child(userId).setValue(mUser);
+//                        //mDatabase.child("users").child(mUserId).setValue(medicinfo1);
 
-                        User mUser = new User(name, email);
-                        //mDatabase.push().setValue(mUser);
-
-                        mDatabase.child("Users").child(userId).setValue(mUser);
                         Intent mIntent = new Intent(Registration.this,MedicalInfo.class);
                         mIntent.putExtra("User_Name", name);
+                        mIntent.putExtra("User_Email", email);
+
 
                         mIntent.putExtra("User_ID", userId);
 
@@ -130,21 +134,21 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     }
                 });
     }
-    @IgnoreExtraProperties
-    public class User {
-
-        public String username;
-        public String email;
-
-
-        public User() {
-            // Default constructor required for calls to DataSnapshot.getValue(User.class)
-        }
-
-        public User(String username, String email) {
-            this.username = username;
-            this.email = email;
-        }
-
-    }
+//    @IgnoreExtraProperties
+//    public class User {
+//
+//        public String username;
+//        public String email;
+//
+//
+//        public User() {
+//            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+//        }
+//
+//        public User(String username, String email) {
+//            this.username = username;
+//            this.email = email;
+//        }
+//
+//    }
 }

@@ -24,7 +24,7 @@ public class MedicalInfo extends AppCompatActivity {
     private Button mRegisterComplete;
     private FirebaseAuth mUserAuth;
     private DatabaseReference mDatabase;
-    private String mUserId, mName;
+    private String mUserId, name, email;
 
 
 
@@ -40,7 +40,8 @@ public class MedicalInfo extends AppCompatActivity {
 
         Intent mIntent = getIntent();
         mUserId= mIntent.getStringExtra("User_ID");
-        mName =  mIntent.getStringExtra("User_Name");
+        name =  mIntent.getStringExtra("User_Name");
+        email =  mIntent.getStringExtra("User_Email");
 
         mRegisterComplete = findViewById(R.id.button_complete);
         mUserAuth = FirebaseAuth.getInstance();
@@ -60,16 +61,20 @@ public class MedicalInfo extends AppCompatActivity {
         mAns1 = (RadioButton) findViewById(selectedId);
 
 
-        final String answer = mAns.getText().toString();
-        final String answer1 = mAns1.getText().toString();
+        final String allergy_answer = mAns.getText().toString();
+        final String medical_condition_answer = mAns1.getText().toString();
 
         final String allergy = mAllergies.getText().toString();
-        final String medical = mMedicalCond.getText().toString();
+        final String medical_condition = mMedicalCond.getText().toString();
 
         //No option selected by user
-//        if (TextUtils.isEmpty(answer)){
-//            Toast.makeText(getApplicationContext(), "Select an answer", Toast.LENGTH_LONG).show();
-//        }
+        if (TextUtils.isEmpty(allergy_answer)){
+            Toast.makeText(getApplicationContext(), "Select an answer", Toast.LENGTH_LONG).show();
+        }
+        //No option selected by user
+        if (TextUtils.isEmpty(medical_condition_answer)){
+            Toast.makeText(getApplicationContext(), "Select an answer", Toast.LENGTH_LONG).show();
+        }
 //
 //        //No email address entered by user
 //        if (answer == "Yes" && TextUtils.isEmpty(allergy)){
@@ -81,10 +86,10 @@ public class MedicalInfo extends AppCompatActivity {
 //        }
 
 
-        Medical medicinfo1 = new Medical(answer,allergy,answer1,medical);
+        Medical medicinfo1 = new Medical(name, email, allergy_answer,allergy,medical_condition_answer,medical_condition);
         mDatabase.child("users").child(mUserId).setValue(medicinfo1);
-        Intent mIntent = new Intent(MedicalInfo.this,Welcome.class);
-        mIntent.putExtra("User_Name", mName);
+        Intent mIntent = new Intent(MedicalInfo.this, Welcome.class);
+        mIntent.putExtra("User_Name", name);
 
         mIntent.putExtra("User_ID", mUserId);
 
@@ -98,18 +103,20 @@ public class MedicalInfo extends AppCompatActivity {
 
     public class Medical {
 
-        public String ans,allergy,ans1,mediccondtn;
+        public String name, email, allergy_answer,allergy,medical_condition_answer,medical_condition;
 
 
         public Medical() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public Medical(String ans,String allergy,String ans1,  String mediccondtn) {
-            this.ans = ans;
-            this.ans1 = ans1;
-            this.allergy =allergy;
-            this.mediccondtn = mediccondtn;
+        public Medical(String name, String email, String allergy_answer,String allergy,String medical_condition_answer, String medical_condition) {
+            this.name = name;
+            this.email = email;
+            this.allergy_answer = allergy_answer;
+            this.allergy = allergy;
+            this.medical_condition_answer = medical_condition_answer;
+            this.medical_condition = medical_condition;
         }
 
     }

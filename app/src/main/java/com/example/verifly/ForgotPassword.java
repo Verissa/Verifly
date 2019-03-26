@@ -38,18 +38,18 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
     private void sendEmail() {
-        String mEmail = mUserEmail.getText().toString();
-
-
-        if (TextUtils.isEmpty(mEmail)) {
-            Toast.makeText(getApplication(), "Enter your registered email address", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        String mEmail = mUserEmail.getText().toString();
+//
+//
+//        if (TextUtils.isEmpty(mEmail)) {
+//            Toast.makeText(getApplication(), "Enter your registered email address", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         //Invalid email address
-        if (!Patterns.EMAIL_ADDRESS.matcher(mUserEmail.getText().toString()).matches()) {
-            Toast.makeText(getApplicationContext(), "Enter a valid email address", Toast.LENGTH_LONG).show();
-            return;
-        }
+//        if (!Patterns.EMAIL_ADDRESS.matcher(mEmail).matches()) {
+//            Toast.makeText(getApplicationContext(), "Enter a valid email address", Toast.LENGTH_LONG).show();
+//            return;
+//        }
 
 
         mAuth.sendPasswordResetEmail(mUserEmail.getText().toString())
