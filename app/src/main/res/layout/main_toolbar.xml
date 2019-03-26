@@ -87,7 +87,7 @@
                         android:fontFamily="@font/ttbold"
                         android:text="@string/main_placeholder_name"
                         android:textColor="#fff"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
