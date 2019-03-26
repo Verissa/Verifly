@@ -28,8 +28,8 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
     private ImageButton request, quiz, learn;
     private TextView mUserName;
     private String mUserId, mName;
-    //private FirebaseUser mUser;
-    //private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private FirebaseAuth mAuth;
 
 
 
@@ -47,22 +47,16 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
         quiz.setOnClickListener(this);
         learn.setOnClickListener(this);
         mUserName = findViewById(R.id.main_toolbar_name);
+
+
         Intent mIntent = getIntent();
-        String mUserId = mIntent.getStringExtra("User_ID");
-        String mName = mIntent.getStringExtra("User_Name");
+        String previousActivity= mIntent.getStringExtra("FROM_ACTIVITY");
 
-        //mUser = mAuth.getCurrentUser();
-        mUserName.setText(mName);
-
-//        Intent mIntent = getIntent();
-//        mUserId= mIntent.getStringExtra("User_ID");
-//        mName = mIntent.getStringExtra()
-//
-//        if (previousActivity.equals("Main")){
-//            String mUserId = mIntent.getStringExtra("User_ID");
-//            String userName = mIntent.getStringExtra("User_Name");
-//            mUserName.setText(userName);
-//        }
+        if (previousActivity.equals("Main")){
+            String mUserId = mIntent.getStringExtra("User_ID");
+            String userName = mIntent.getStringExtra("User_Name");
+            mUserName.setText(userName);
+        }
 
 //        if (previousActivity.equals("MedicalInfo")){
 //            String mUserId = mIntent.getStringExtra("User_ID");

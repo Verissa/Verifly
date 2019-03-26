@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String mUserId = user.getUid();
                             String mUserName = user.getDisplayName();
                             Intent mIntent = new Intent(MainActivity.this, Welcome.class);
+                            mIntent.putExtra("FROM_ACTIVITY", "Main");
                             mIntent.putExtra("User_ID", mUserId);
                             mIntent.putExtra("User_Name", mUserName);
                             startActivity(mIntent);

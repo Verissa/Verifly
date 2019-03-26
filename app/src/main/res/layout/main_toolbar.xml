@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
+        android:layout_height="124dp"
         android:layout_margin="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -17,7 +17,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -47,7 +46,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="69dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="2">
@@ -82,12 +81,12 @@
 
                     <TextView
                         android:id="@+id/main_toolbar_name"
-                        android:layout_width="100dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/ttbold"
                         android:text="@string/main_placeholder_name"
                         android:textColor="#fff"
-                        android:textSize="18dp" />
+                        android:textSize="20dp" />
 
                 </LinearLayout>
 
@@ -96,9 +95,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_marginLeft="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="100dp"
                 android:layout_weight="1">
 
                 <ImageButton
@@ -110,6 +109,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
 
 
     </androidx.appcompat.widget.Toolbar>
