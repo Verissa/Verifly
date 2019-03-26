@@ -22,12 +22,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mForgotPass;
     private Button mLogin, mNewUser;
     private EditText mUserEmail, mUserPass;
     private FirebaseAuth mAuth;
+    private String mUserId, mName;
 
 
     @Override
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mUserPass = findViewById(R.id.password);
 
         mAuth = FirebaseAuth.getInstance();
+
 
 
     }
@@ -115,12 +122,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             assert user != null;
-                            String mUserId = user.getUid();
-                            String mUserName = user.getDisplayName();
+                            mUserId = user.getUid();
+                            //mName = user.getDisplayName();
+                            //Toast.makeText(getApplicationContext(), mName, Toast.LENGTH_LONG).show();
+                            //startActivity(new Intent(MainActivity.this, Welcome.class));
+
+
                             Intent mIntent = new Intent(MainActivity.this, Welcome.class);
                             mIntent.putExtra("FROM_ACTIVITY", "Main");
                             mIntent.putExtra("User_ID", mUserId);
-                            mIntent.putExtra("User_Name", mUserName);
+                            //mIntent.putExtra("User_Name", mName);
+
                             startActivity(mIntent);
                         }
                     }
@@ -151,4 +163,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
     }
+
 }

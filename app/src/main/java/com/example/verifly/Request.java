@@ -31,6 +31,7 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
     private Location currentLocation;
     private String mUserId;
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
     private DatabaseReference mDatabase;
 
 
@@ -42,8 +43,13 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
         Intent mIntent = getIntent();
+
         mUserId= mIntent.getStringExtra("User_ID");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+        mUser = mAuth.getCurrentUser();
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(Request.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Request.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -72,7 +78,7 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
                     currentLocation = location;
 
                     Loc mLoc = new Loc(currentLocation.getLatitude(), currentLocation.getLongitude());
-                    mDatabase.child("requests").child(mUserId).setValue(mLoc);
+                    mDatabase.child("requests").child(mUser.getUid()).setValue(mLoc);
 
                     //Toast.makeText(Request.this,currentLocation.getLatitude()+" "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment= (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

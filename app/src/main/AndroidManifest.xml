@@ -13,11 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Injuries"></activity>
+        <activity android:name=".NBInstructions"></activity>
+        <activity android:name=".Injuries" />
         <activity android:name=".Quiz" />
         <activity android:name=".Learn" />
         <activity android:name=".Request" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".MedicalInfo" />
         <activity android:name=".Welcome" />
         <activity android:name=".Registration" />
@@ -32,7 +33,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB5fhiJ7vJU3i-H8smpqfYk_p43SZpdab0" />
+            android:value="AIzaSyAmg4_LwMo6wZ6qnI4CzlaHITQyUKIS2fw" />
     </application>
 
 </manifest>

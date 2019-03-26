@@ -89,6 +89,8 @@ public class MedicalInfo extends AppCompatActivity {
         Medical medicinfo1 = new Medical(name, email, allergy_answer,allergy,medical_condition_answer,medical_condition);
         mDatabase.child("users").child(mUserId).setValue(medicinfo1);
         Intent mIntent = new Intent(MedicalInfo.this, Welcome.class);
+        mIntent.putExtra("FROM_ACTIVITY", "MedicalInfo");
+
         mIntent.putExtra("User_Name", name);
 
         mIntent.putExtra("User_ID", mUserId);
