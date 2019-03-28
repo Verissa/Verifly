@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,6 +34,7 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private DatabaseReference mDatabase;
+    private Handler mHandler = new Handler();
 
 
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -44,7 +46,7 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_request);
         Intent mIntent = getIntent();
 
-        mUserId= mIntent.getStringExtra("User_ID");
+        mUserId = mIntent.getStringExtra("User_ID");
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
@@ -77,27 +79,45 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
                 if (location != null) {
                     currentLocation = location;
 
-                    Loc mLoc = new Loc(currentLocation.getLatitude(), currentLocation.getLongitude());
-                    mDatabase.child("requests").child(mUser.getUid()).setValue(mLoc);
 
                     //Toast.makeText(Request.this,currentLocation.getLatitude()+" "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
-                    SupportMapFragment supportMapFragment= (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     supportMapFragment.getMapAsync(Request.this);
-                }else{
-                    Toast.makeText(Request.this,"No Location recorded",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Request.this, "No Location recorded", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+        LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         //MarkerOptions are used to create a new Marker.You can specify location, title etc with MarkerOptions
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("You are Here");
+
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         //Adding the created the marker on the map
         googleMap.addMarker(markerOptions);
+        Loc mLoc = new Loc(mUser.getUid(), currentLocation.getLatitude(), currentLocation.getLongitude());
+        DatabaseReference newRef = mDatabase.child("requests").push();
+        newRef.setValue(mLoc);
+
+
+//        String id = mDatabase.child("requests").push().getKey();
+//        mDatabase.child("requests").child(id).setValue(mLoc);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(Request.this, Injuries.class);
+                startActivity(intent);
+            }
+        }, 7000); // 4 seconds
     }
+
+
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResult) {
         switch (requestCode) {
@@ -115,6 +135,8 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
     @IgnoreExtraProperties
     public class Loc {
 
+
+        public  String userID;
         public Double long1;
         public Double lat;
 
@@ -123,7 +145,8 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public Loc(Double lat, Double long1) {
+        public Loc(String userID,Double lat, Double long1) {
+            this.userID = userID;
             this.long1 = long1;
             this.lat = lat;
         }
