@@ -21,10 +21,6 @@
             "package_name": "com.example.verifly",
             "certificate_hash": "837207ca89c61c72aa2943677da4b1526033a09d"
           }
-        },
-        {
-          "client_id": "466856906043-somvb1fijeemjbhk2np3n26p2i8kni0q.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -33,20 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "466856906043-somvb1fijeemjbhk2np3n26p2i8kni0q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

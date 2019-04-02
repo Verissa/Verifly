@@ -47,22 +47,26 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
         Intent mIntent = getIntent();
 
         mUserId = mIntent.getStringExtra("User_ID");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("requests");
         mAuth = FirebaseAuth.getInstance();
 
         mUser = mAuth.getCurrentUser();
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(Request.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Request.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+        if (ActivityCompat.checkSelfPermission(Request.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Request.this,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_REQUEST_CODE);
             return;
         }
         fetchLastLocation();
     }
 
     private void fetchLastLocation() {
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    Activity#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -80,8 +84,10 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
                     currentLocation = location;
 
 
-                    //Toast.makeText(Request.this,currentLocation.getLatitude()+" "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
-                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+                    //Toast.makeText(Request.this,currentLocation.getLatitude()+" "+currentLocation.getLongitude(),
+                    // Toast.LENGTH_SHORT).show();
+                    SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().
+                            findFragmentById(R.id.map);
                     supportMapFragment.getMapAsync(Request.this);
                 } else {
                     Toast.makeText(Request.this, "No Location recorded", Toast.LENGTH_SHORT).show();
@@ -99,11 +105,14 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         //Adding the created the marker on the map
         googleMap.addMarker(markerOptions);
+        if(mAuth!= null){
         Loc mLoc = new Loc(mUser.getUid(), currentLocation.getLatitude(), currentLocation.getLongitude());
-        DatabaseReference newRef = mDatabase.child("requests").push();
-        newRef.setValue(mLoc);
 
+//        DatabaseReference newRef = mDatabase.child("requests").push();
+//        newRef.setValue(mLoc);
 
+        mDatabase.push().setValue(mLoc);}
+//
 //        String id = mDatabase.child("requests").push().getKey();
 //        mDatabase.child("requests").child(id).setValue(mLoc);
         mHandler.postDelayed(new Runnable() {
