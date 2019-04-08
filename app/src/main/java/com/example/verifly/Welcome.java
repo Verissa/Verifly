@@ -97,7 +97,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
 
         switch (id) {
             case R.id.imageButton_search:
-                Intent mIntent = new Intent(Welcome.this, Request.class);
+                Intent mIntent = new Intent(Welcome.this, Injuries.class);
                 mIntent.putExtra("User_ID", mUserId);
                 startActivity(mIntent);
                 break;

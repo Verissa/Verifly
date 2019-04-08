@@ -104,22 +104,40 @@ public class Request extends FragmentActivity implements OnMapReadyCallback {
 
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         //Adding the created the marker on the map
-        googleMap.addMarker(markerOptions);
-        if(mAuth!= null){
-        Loc mLoc = new Loc(mUser.getUid(), currentLocation.getLatitude(), currentLocation.getLongitude());
+        //googleMap.addMarker(markerOptions);
+        FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
+        Loc mLoc = new Loc(user.getUid(), currentLocation.getLatitude(), currentLocation.getLongitude());
 
 //        DatabaseReference newRef = mDatabase.child("requests").push();
 //        newRef.setValue(mLoc);
 
-        mDatabase.push().setValue(mLoc);}
+        mDatabase.push().setValue(mLoc);
 //
 //        String id = mDatabase.child("requests").push().getKey();
 //        mDatabase.child("requests").child(id).setValue(mLoc);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Request.this, Injuries.class);
-                startActivity(intent);
+
+
+                Intent mIntent = getIntent();
+                String previousActivity= mIntent.getStringExtra("Injury");
+
+                if (previousActivity.equals("Nosebleed")){
+                    Intent intent = new Intent(Request.this, Guidelines.class);
+                    startActivity(intent);
+                }
+
+                if (previousActivity.equals("Sprains")){
+                    Intent intent = new Intent(Request.this, Guidelines2.class);
+                    startActivity(intent);
+                }
+                if (previousActivity.equals("Cuts")){
+                    Intent intent = new Intent(Request.this, Guidelines3.class);
+                    startActivity(intent);
+                }
+
             }
         }, 7000); // 4 seconds
     }

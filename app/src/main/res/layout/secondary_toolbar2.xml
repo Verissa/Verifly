@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="34dp"
                     android:fontFamily="@font/titillium"
-                    android:text="Type of Injury"
+                    android:text="Nosebleeds"
                     android:textColor="#fff"
                     android:textSize="22dp" />
 
